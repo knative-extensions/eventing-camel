@@ -7,9 +7,7 @@ require (
 	github.com/apache/camel-k/pkg/client/camel v1.1.0
 	github.com/cloudevents/sdk-go/v2 v2.2.0
 	github.com/google/go-cmp v0.5.1
-	github.com/gorilla/websocket v1.4.2
 	github.com/influxdata/tdigest v0.0.1 // indirect
-	github.com/kelseyhightower/envconfig v1.4.0
 	github.com/stretchr/testify v1.6.0 // indirect
 	go.opencensus.io v0.22.5-0.20200716030834-3456e1d174b2 // indirect
 	go.uber.org/zap v1.15.0
