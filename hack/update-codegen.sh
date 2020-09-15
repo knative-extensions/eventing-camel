@@ -19,8 +19,6 @@ set -o nounset
 set -o pipefail
 
 export GO111MODULE=on
-# If we run with -mod=vendor here, then generate-groups.sh looks for vendor files in the wrong place.
-export GOFLAGS=-mod=
 
 if [ -z "${GOPATH:-}" ]; then
   export GOPATH=$(go env GOPATH)
@@ -37,41 +35,35 @@ chmod +x ${KNATIVE_CODEGEN_PKG}/hack/generate-knative.sh
 
 (
   # External Camel API
-  OUTPUT_PKG="knative.dev/eventing-contrib/camel/source/pkg/camel-k/injection" \
+  OUTPUT_PKG="knative.dev/eventing-camel/pkg/camel-k/injection" \
   VERSIONED_CLIENTSET_PKG="github.com/apache/camel-k/pkg/client/camel/clientset/versioned" \
   EXTERNAL_INFORMER_PKG="github.com/apache/camel-k/pkg/client/camel/informers/externalversions" \
     ${KNATIVE_CODEGEN_PKG}/hack/generate-knative.sh "injection" \
-      "knative.dev/eventing-contrib/camel/source/pkg/client/camel" "github.com/apache/camel-k/pkg/apis" \
+      "knative.dev/eventing-camel/pkg/client/camel" "github.com/apache/camel-k/pkg/apis" \
       "camel:v1" \
       --go-header-file ${REPO_ROOT_DIR}/hack/boilerplate.go.txt
 )
 
-# Just Sources
-API_DIRS_SOURCES=(camel/source/pkg)
+# generate the code with:
+# --output-base    because this script should also be able to run inside the vendor dir of
+#                  k8s.io/kubernetes. The output-base is needed for the generators to output into the vendor dir
+#                  instead of the $GOPATH directly. For normal projects this can be dropped.
+${CODEGEN_PKG}/generate-groups.sh "deepcopy,client,informer,lister" \
+  knative.dev/eventing-camel/pkg/client knative.dev/eventing-camel/pkg/apis \
+  "sources:v1alpha1" \
+  --go-header-file ${REPO_ROOT_DIR}/hack/boilerplate.go.txt
 
-for DIR in "${API_DIRS_SOURCES[@]}"; do
-  # generate the code with:
-  # --output-base    because this script should also be able to run inside the vendor dir of
-  #                  k8s.io/kubernetes. The output-base is needed for the generators to output into the vendor dir
-  #                  instead of the $GOPATH directly. For normal projects this can be dropped.
-  ${CODEGEN_PKG}/generate-groups.sh "deepcopy,client,informer,lister" \
-    "knative.dev/eventing-contrib/${DIR}/client" "knative.dev/eventing-contrib/${DIR}/apis" \
-    "sources:v1alpha1" \
-    --go-header-file ${REPO_ROOT_DIR}/hack/boilerplate.go.txt
-
-  # Knative Injection
-  ${KNATIVE_CODEGEN_PKG}/hack/generate-knative.sh "injection" \
-    "knative.dev/eventing-contrib/${DIR}/client" "knative.dev/eventing-contrib/${DIR}/apis" \
-    "sources:v1alpha1" \
-    --go-header-file ${REPO_ROOT_DIR}/hack/boilerplate.go.txt
-done
-
+# Knative Injection
+${KNATIVE_CODEGEN_PKG}/hack/generate-knative.sh "injection" \
+  knative.dev/eventing-camel/pkg/client knative.dev/eventing-camel/pkg/apis \
+  "sources:v1alpha1" \
+  --go-header-file ${REPO_ROOT_DIR}/hack/boilerplate.go.txt
 
 # Depends on generate-groups.sh to install bin/deepcopy-gen
 ${GOPATH}/bin/deepcopy-gen \
   -O zz_generated.deepcopy \
   --go-header-file ${REPO_ROOT_DIR}/hack/boilerplate.go.txt \
-  -i knative.dev/eventing-contrib/camel/source/pkg/apis
+  -i knative.dev/eventing-camel/pkg/apis
 
 # Make sure our dependencies are up-to-date
 ${REPO_ROOT_DIR}/hack/update-deps.sh

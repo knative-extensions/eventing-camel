@@ -3,29 +3,15 @@
 approvers:
 - toc
 - grantr
-- Harwayne
 - vaikas
-- n3wscott
 - matzew
-- nachocano
 - lionelvillard
-- slinkydeveloper
-- lberk
+- nicolaferraro
+- matzew
 
 # Reviewers are suggested from the reviewers list first, then the approvers
 # list. To add reviewers while spreading the load among existing approvers,
 # copy the approvers to the reviewers list too.
 reviewers:
-- grantr
-- Harwayne
-- vaikas
-- n3wscott
+- nicolaferraro
 - matzew
-- nachocano
-- lionelvillard
-- slinkydeveloper
-- lberk
-# Add reviewers below
-- aslom
-- aliok
-
