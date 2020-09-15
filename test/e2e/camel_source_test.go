@@ -31,8 +31,8 @@ import (
 	"knative.dev/eventing/test/lib/resources"
 	knativeduck "knative.dev/pkg/apis/duck/v1beta1"
 
-	"knative.dev/eventing-contrib/camel/source/pkg/apis/sources/v1alpha1"
-	camelsourceclient "knative.dev/eventing-contrib/camel/source/pkg/client/clientset/versioned"
+	"knative.dev/eventing-camel/pkg/apis/sources/v1alpha1"
+	camelsourceclient "knative.dev/eventing-camel/pkg/client/clientset/versioned"
 )
 
 func TestCamelSource(t *testing.T) {
