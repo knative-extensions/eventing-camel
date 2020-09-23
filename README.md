@@ -6,7 +6,8 @@
 [![LICENSE](https://img.shields.io/github/license/knative-sandbox/eventing-camel.svg)](https://github.com/knative-sandbox/eventing-camel/blob/master/LICENSE)
 [![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](https://knative.slack.com)
 
-The Knative Eventing Camel project provides sources based on Apache Camel K integrations. 
+The Knative Eventing Camel project provides sources based on Apache Camel K
+integrations.
 
 For complete documentation about Knative Eventing, see the following repos:
 
