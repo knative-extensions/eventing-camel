@@ -3,8 +3,8 @@ module knative.dev/eventing-camel
 go 1.14
 
 require (
-	github.com/apache/camel-k/pkg/apis/camel v1.1.0
-	github.com/apache/camel-k/pkg/client/camel v1.1.0
+	github.com/apache/camel-k/pkg/apis/camel v1.1.1-0.20200928093549-a76a0cec8b2d
+	github.com/apache/camel-k/pkg/client/camel v1.1.1-0.20200928093549-a76a0cec8b2d
 	github.com/cloudevents/sdk-go/v2 v2.2.0
 	github.com/google/go-cmp v0.5.2
 	github.com/google/licenseclassifier v0.0.0-20200708223521-3d09a0ea2f39
@@ -30,10 +30,10 @@ replace (
 	github.com/Azure/go-autorest/autorest => github.com/Azure/go-autorest/autorest v0.9.6
 	github.com/googleapis/gnostic => github.com/googleapis/gnostic v0.3.1
 	github.com/prometheus/client_golang => github.com/prometheus/client_golang v0.9.2
-	k8s.io/api => k8s.io/api v0.17.6
-	k8s.io/apiextensions-apiserver => k8s.io/apiextensions-apiserver v0.17.6
-	k8s.io/apimachinery => k8s.io/apimachinery v0.17.6
-	k8s.io/apiserver => k8s.io/apiserver v0.17.6
-	k8s.io/client-go => k8s.io/client-go v0.17.6
-	k8s.io/code-generator => k8s.io/code-generator v0.17.6
+	k8s.io/api => k8s.io/api v0.18.8
+	k8s.io/apiextensions-apiserver => k8s.io/apiextensions-apiserver v0.18.8
+	k8s.io/apimachinery => k8s.io/apimachinery v0.18.8
+	k8s.io/apiserver => k8s.io/apiserver v0.18.8
+	k8s.io/client-go => k8s.io/client-go v0.18.8
+	k8s.io/code-generator => k8s.io/code-generator v0.18.8
 )

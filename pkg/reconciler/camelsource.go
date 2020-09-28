@@ -72,7 +72,7 @@ func (r *Reconciler) ReconcileKind(ctx context.Context, source *v1alpha1.CamelSo
 		dest.DeprecatedNamespace = source.GetNamespace()
 	}
 
-	sinkURI, err := r.sinkResolver.URIFromDestination(*dest, source)
+	sinkURI, err := r.sinkResolver.URIFromDestination(ctx, *dest, source)
 	if err != nil {
 		source.Status.MarkNoSink("NotFound", "")
 		return err
@@ -163,7 +163,7 @@ func (r *Reconciler) reconcileIntegration(ctx context.Context, source *v1alpha1.
 }
 
 func (r *Reconciler) getIntegration(ctx context.Context, source *v1alpha1.CamelSource) (*camelv1.Integration, error) {
-	all, err := r.camelClientSet.CamelV1().Integrations(source.Namespace).List(metav1.ListOptions{})
+	all, err := r.camelClientSet.CamelV1().Integrations(source.Namespace).List(ctx, metav1.ListOptions{})
 	if err != nil {
 		return nil, err
 	}
@@ -181,9 +181,9 @@ func (r *Reconciler) createIntegration(ctx context.Context, source *v1alpha1.Cam
 		return nil, err
 	}
 
-	return r.camelClientSet.CamelV1().Integrations(source.Namespace).Create(integration)
+	return r.camelClientSet.CamelV1().Integrations(source.Namespace).Create(ctx, integration, metav1.CreateOptions{})
 }
 
 func (r *Reconciler) updateIntegration(ctx context.Context, integration *camelv1.Integration) (*camelv1.Integration, error) {
-	return r.camelClientSet.CamelV1().Integrations(integration.Namespace).Update(integration)
+	return r.camelClientSet.CamelV1().Integrations(integration.Namespace).Update(ctx, integration, metav1.UpdateOptions{})
 }
