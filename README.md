@@ -1,25 +1,13 @@
-# Knative Eventing Contrib
+# Knative Eventing Camel Source
 
-[![go.dev reference](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white)](https://pkg.go.dev/github.com/knative/eventing-contrib)
-[![Go Report Card](https://goreportcard.com/badge/knative/eventing-contrib)](https://goreportcard.com/report/knative/eventing-contrib)
-[![Releases](https://img.shields.io/github/release-pre/knative/eventing-contrib.svg)](https://github.com/knative/eventing-contrib/releases)
-[![LICENSE](https://img.shields.io/github/license/knative/eventing-contrib.svg)](https://github.com/knative/eventing-contrib/blob/master/LICENSE)
+[![go.dev reference](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white)](https://pkg.go.dev/github.com/knative-sandbox/eventing-camel)
+[![Go Report Card](https://goreportcard.com/badge/knative-sandbox/eventing-camel)](https://goreportcard.com/report/knative-sandbox/eventing-camel)
+[![Releases](https://img.shields.io/github/release-pre/knative-sandbox/eventing-camel.svg)](https://github.com/knative-sandbox/eventing-camel/releases)
+[![LICENSE](https://img.shields.io/github/license/knative-sandbox/eventing-camel.svg)](https://github.com/knative-sandbox/eventing-camel/blob/master/LICENSE)
 [![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](https://knative.slack.com)
 
-The Knative Eventing Contrib project provides source and channel implementations
-that:
-
-- Integrate with Apache Camel-K
-- Integrate with Apache CouchDB
-- Integrate with Apache Kafka
-- Integrate with AWS SQS
-- Integrate with Ceph
-- Integrate with GitHub
-- Integrate with GitLab
-- Integrate with NATS Streaming
-- Integrate with Prometheus
-- Integrate with Websockets
-- Expose an ingress
+The Knative Eventing Camel project provides sources based on Apache Camel K
+integrations.
 
 For complete documentation about Knative Eventing, see the following repos:
 
