@@ -19,11 +19,14 @@ limitations under the License.
 package e2e
 
 import (
+	"os"
+	"strings"
 	"testing"
 	"time"
 
 	camelv1 "github.com/apache/camel-k/pkg/apis/camel/v1"
 	camelclientset "github.com/apache/camel-k/pkg/client/camel/clientset/versioned"
+
 	"github.com/cloudevents/sdk-go/v2/test"
 	meta "k8s.io/apimachinery/pkg/apis/meta/v1"
 	testlib "knative.dev/eventing/test/lib"
@@ -52,9 +55,6 @@ func TestCamelSource(t *testing.T) {
 
 	t.Logf("Creating Camel K IntegrationPlatform")
 	createCamelPlatformOrFail(client, camelClient, camelSourceName)
-
-	t.Logf("Creating Camel K Kit (to skip build)")
-	createCamelKitOrFail(client, camelClient, camelSourceName)
 
 	t.Logf("Creating CamelSource")
 	createCamelSourceOrFail(client, &v1alpha1.CamelSource{
@@ -141,6 +141,12 @@ func createCamelPlatformOrFail(c *testlib.Client, camelClient camelclientset.Int
 		},
 		Spec: camelv1.IntegrationPlatformSpec{
 			Profile: camelv1.TraitProfileKnative,
+			Build: camelv1.IntegrationPlatformBuildSpec{
+				Registry: camelv1.IntegrationPlatformRegistrySpec{
+					Insecure: getBuildRegistryInsecure(),
+					Address:  getBuildRegistry(),
+				},
+			},
 		},
 	}
 
@@ -149,53 +155,22 @@ func createCamelPlatformOrFail(c *testlib.Client, camelClient camelclientset.Int
 	}
 }
 
-func createCamelKitOrFail(c *testlib.Client, camelClient camelclientset.Interface, camelSourceName string) {
-	// Creating this kit manually because the Camel K platform is not configured to do it on its own.
-	// Testing that Camel K works is not in scope for this test.
-	kit := camelv1.IntegrationKit{
-		ObjectMeta: meta.ObjectMeta{
-			Name:      "test-kit",
-			Namespace: c.Namespace,
-			Labels: map[string]string{
-				"camel.apache.org/kit.type": "external",
-			},
-		},
-		Spec: camelv1.IntegrationKitSpec{
-			Dependencies: []string{
-				"camel:core-languages",
-				"camel:timer",
-				"mvn:org.apache.camel.k/camel-k-loader-yaml",
-				"mvn:org.apache.camel.k/camel-k-runtime-http",
-				"mvn:org.apache.camel.k/camel-k-runtime-knative",
-				"mvn:org.apache.camel.k/camel-k-runtime-main",
-				"mvn:org.apache.camel.k/camel-knative",
-			},
-			Image: "docker.io/testcamelk/camel-k-kit-knative-timer:1.1.0",
-		},
-	}
-
-	if _, err := camelClient.CamelV1().IntegrationKits(c.Namespace).Create(&kit); err != nil {
-		c.T.Fatalf("Failed to create IntegrationKit for CamelSource %q: %v", camelSourceName, err)
-	}
-
-	// Wait for the kit to be "Ready" before creating other resources
-	var ik *camelv1.IntegrationKit
-	for i := 0; i < 30; i++ {
-		var err error
-		ik, err = camelClient.CamelV1().IntegrationKits(c.Namespace).Get(kit.Name, meta.GetOptions{})
-		if err != nil {
-			c.T.Fatalf("Failed to retrieve IntegrationKit %q: %v", kit.Name, err)
-		}
-		if ik.Status.Phase == camelv1.IntegrationKitPhaseReady {
-			break
-		}
-		time.Sleep(1 * time.Second)
-	}
-	if ik == nil || ik.Status.Phase != camelv1.IntegrationKitPhaseReady {
-		c.T.Fatalf("IntegrationKit %q is not ready", kit.Name)
-	}
-}
-
 func getCamelKClient(c *testlib.Client) camelclientset.Interface {
 	return camelclientset.NewForConfigOrDie(c.Config)
+}
+
+func getBuildRegistry() string {
+	registry := os.Getenv("CAMEL_K_REGISTRY")
+	if registry == "" {
+		registry = "registry:5000"
+	}
+	return registry
+}
+
+func getBuildRegistryInsecure() bool {
+	insecure := os.Getenv("CAMEL_K_REGISTRY_INSECURE")
+	if insecure == "" {
+		insecure = "true"
+	}
+	return strings.ToLower(insecure) == "true"
 }
