@@ -100,9 +100,9 @@ jobs:
           kamel install --registry registry:5000 --registry-insecure --global -n camel-system
       - name: Install Knative
         env:
-          SERVING_VERSION: v0.17.2
-          KOURIER_VERSION: v0.17.1
-          EVENTING_VERSION: v0.17.3
+          SERVING_VERSION: v0.18.0
+          KOURIER_VERSION: v0.18.0
+          EVENTING_VERSION: v0.18.0
         run: |
           # Prerequisites
           sudo pip install yq
@@ -110,7 +110,7 @@ jobs:
           # Serving
           kubectl apply --filename https://github.com/knative/serving/releases/download/$SERVING_VERSION/serving-crds.yaml
           sleep 5
-          curl -L -s https://github.com/knative/serving/releases/download/$SERVING_VERSION/serving-core.yaml | yq 'del(.spec.template.spec.containers[]?.resources)' -y | kubectl apply -f -
+          curl -L -s https://github.com/knative/serving/releases/download/$SERVING_VERSION/serving-core.yaml | yq 'del(.spec.template.spec.containers[]?.resources)' -y | yq 'del(.metadata.annotations."knative.dev/example-checksum")' -y | kubectl apply -f -
           sleep 60
           kubectl get pod -n knative-serving
 
@@ -126,11 +126,11 @@ jobs:
           # Eventing
           kubectl apply --filename https://github.com/knative/eventing/releases/download/$EVENTING_VERSION/eventing-crds.yaml
           sleep 5
-          curl -L -s https://github.com/knative/eventing/releases/download/$EVENTING_VERSION/eventing-core.yaml | yq 'del(.spec.template.spec.containers[]?.resources)' -y | kubectl apply -f -
+          curl -L -s https://github.com/knative/eventing/releases/download/$EVENTING_VERSION/eventing-core.yaml | yq 'del(.spec.template.spec.containers[]?.resources)' -y | yq 'del(.metadata.annotations."knative.dev/example-checksum")' -y | kubectl apply -f -
           # Eventing channels
-          curl -L -s https://github.com/knative/eventing/releases/download/$EVENTING_VERSION/in-memory-channel.yaml | yq 'del(.spec.template.spec.containers[]?.resources)' -y | kubectl apply -f -
+          curl -L -s https://github.com/knative/eventing/releases/download/$EVENTING_VERSION/in-memory-channel.yaml | yq 'del(.spec.template.spec.containers[]?.resources)' -y | yq 'del(.metadata.annotations."knative.dev/example-checksum")' -y | kubectl apply -f -
           # Eventing broker
-          curl -L -s https://github.com/knative/eventing/releases/download/$EVENTING_VERSION/mt-channel-broker.yaml | yq 'del(.spec.template.spec.containers[]?.resources)' -y | kubectl apply -f -
+          curl -L -s https://github.com/knative/eventing/releases/download/$EVENTING_VERSION/mt-channel-broker.yaml | yq 'del(.spec.template.spec.containers[]?.resources)' -y | yq 'del(.metadata.annotations."knative.dev/example-checksum")' -y | kubectl apply -f -
           sleep 30
           kubectl get pod -n knative-eventing
 
