@@ -176,12 +176,10 @@ github.com/andygrunwald/go-gerrit v0.0.0-20190120104749-174420ebee6c/go.mod h1:0
 github.com/anmitsu/go-shlex v0.0.0-20161002113705-648efa622239/go.mod h1:2FmKhYUyUczH0OGQWaF5ceTx0UBShxjsH6f8oGKYe2c=
 github.com/antihax/optional v0.0.0-20180407024304-ca021399b1a6/go.mod h1:V8iCPQYkqmusNa815XgQio277wI47sdRh1dUOLdyC6Q=
 github.com/antihax/optional v1.0.0/go.mod h1:uupD/76wgC+ih3iEmQUL+0Ugr19nfwCT1kdvxnR2qWY=
-github.com/apache/camel-k/pkg/apis/camel v1.1.0 h1:+1fVAcE7Q80FLeEbBMXKgD38hRaUiSHcF+bziU2CItE=
-github.com/apache/camel-k/pkg/apis/camel v1.1.0/go.mod h1:6P14OiO5gopr9irgeNkH63uJbePxXQtGTFye7m+DOgk=
-github.com/apache/camel-k/pkg/apis/camel v1.1.1-0.20200928093549-a76a0cec8b2d h1:QVl56UqDv6sJPGcD0/ZEMwpgtnfJPJWOu1t1ltCleWA=
-github.com/apache/camel-k/pkg/apis/camel v1.1.1-0.20200928093549-a76a0cec8b2d/go.mod h1:TMbrbgH8h0Lnd2VKZEAKUSX4LUi+O0XQJJylgaYOqR8=
-github.com/apache/camel-k/pkg/client/camel v1.1.1-0.20200928093549-a76a0cec8b2d h1:v+By1ebdXu5x9mxcRiMMvcFcMjeJGBwO+RO5QXY79lw=
-github.com/apache/camel-k/pkg/client/camel v1.1.1-0.20200928093549-a76a0cec8b2d/go.mod h1:hfFIO6J+M5oXWYZrviki8eIqq448KcyM1E8Vw9bltqU=
+github.com/apache/camel-k/pkg/apis/camel v1.2.0 h1:WmFjsgjjSJMf6FEQA6/6kQ6yTCUqsKa7Pa9oCDvjj1M=
+github.com/apache/camel-k/pkg/apis/camel v1.2.0/go.mod h1:Qfan7U3YTFDtpoG5QPm5fbBqOnhSuAZDGLpx8N65Nhk=
+github.com/apache/camel-k/pkg/client/camel v1.2.0 h1:x/bCu5HR7PGZf7bXN3p61/5iGxCEftvK7vSYDmwtMRE=
+github.com/apache/camel-k/pkg/client/camel v1.2.0/go.mod h1:/2aCDEG8M16jZSBbXfxl83lVMmXDdSoSt9VnhdaHuWg=
 github.com/apache/thrift v0.12.0/go.mod h1:cp2SuWMxlEZw2r+iP2GNCdIi4C1qmUzdZFSVb+bacwQ=
 github.com/apex/log v1.1.4/go.mod h1:AlpoD9aScyQfJDVHmLMEcx4oU6LqzkWp4Mg9GdAcEvQ=
 github.com/apex/log v1.3.0/go.mod h1:jd8Vpsr46WAe3EZSQ/IUMs2qQD/GOycT5rPWCO1yGcs=

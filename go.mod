@@ -3,8 +3,8 @@ module knative.dev/eventing-camel
 go 1.14
 
 require (
-	github.com/apache/camel-k/pkg/apis/camel v1.1.1-0.20200928093549-a76a0cec8b2d
-	github.com/apache/camel-k/pkg/client/camel v1.1.1-0.20200928093549-a76a0cec8b2d
+	github.com/apache/camel-k/pkg/apis/camel v1.2.0
+	github.com/apache/camel-k/pkg/client/camel v1.2.0
 	github.com/cloudevents/sdk-go/v2 v2.2.0
 	github.com/google/go-cmp v0.5.2
 	github.com/google/licenseclassifier v0.0.0-20200708223521-3d09a0ea2f39
@@ -16,10 +16,10 @@ require (
 	gopkg.in/yaml.v2 v2.3.0
 	gopkg.in/yaml.v3 v3.0.0-20200601152816-913338de1bd2 // indirect
 	honnef.co/go/tools v0.0.1-2020.1.5 // indirect
-	k8s.io/api v0.18.8
-	k8s.io/apimachinery v0.18.8
+	k8s.io/api v0.18.9
+	k8s.io/apimachinery v0.18.9
 	k8s.io/client-go v11.0.1-0.20190805182717-6502b5e7b1b5+incompatible
-	k8s.io/code-generator v0.18.8
+	k8s.io/code-generator v0.18.9
 	k8s.io/kube-openapi v0.0.0-20200410145947-bcb3869e6f29
 	knative.dev/eventing v0.18.1-0.20201001144430-5646fe1b227d
 	knative.dev/pkg v0.0.0-20201001022229-7c082ac1c01d

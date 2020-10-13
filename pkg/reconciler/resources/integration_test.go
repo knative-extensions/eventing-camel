@@ -71,7 +71,7 @@ func TestMakeDeployment_sink(t *testing.T) {
 	}
 
 	config := map[string]string{
-		"configuration": `{"services":[{"type":"endpoint","name":"sink","host":"test-sink","port":80,"metadata":{"camel.endpoint.kind":"sink","ce.override.ce-a":"b","ce.override.ce-source":"camel-source:test-namespace/test-name","knative.apiVersion":"","knative.kind":""}}]}`,
+		"configuration": `{"services":[{"type":"endpoint","name":"sink","url":"http://test-sink","metadata":{"camel.endpoint.kind":"sink","ce.override.ce-a":"b","ce.override.ce-source":"camel-source:test-namespace/test-name","knative.apiVersion":"","knative.kind":""}}]}`,
 	}
 	jsonConfig, err := json.Marshal(config)
 	if err != nil {

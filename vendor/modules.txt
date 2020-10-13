@@ -33,11 +33,11 @@ github.com/alecthomas/template
 github.com/alecthomas/template/parse
 # github.com/alecthomas/units v0.0.0-20190924025748-f65c72e2690d
 github.com/alecthomas/units
-# github.com/apache/camel-k/pkg/apis/camel v1.1.1-0.20200928093549-a76a0cec8b2d
+# github.com/apache/camel-k/pkg/apis/camel v1.2.0
 ## explicit
 github.com/apache/camel-k/pkg/apis/camel/v1
 github.com/apache/camel-k/pkg/apis/camel/v1/knative
-# github.com/apache/camel-k/pkg/client/camel v1.1.1-0.20200928093549-a76a0cec8b2d
+# github.com/apache/camel-k/pkg/client/camel v1.2.0
 ## explicit
 github.com/apache/camel-k/pkg/client/camel/clientset/versioned
 github.com/apache/camel-k/pkg/client/camel/clientset/versioned/fake
@@ -585,7 +585,7 @@ honnef.co/go/tools/staticcheck
 honnef.co/go/tools/stylecheck
 honnef.co/go/tools/unused
 honnef.co/go/tools/version
-# k8s.io/api v0.18.8 => k8s.io/api v0.18.8
+# k8s.io/api v0.18.9 => k8s.io/api v0.18.8
 ## explicit
 k8s.io/api/admission/v1
 k8s.io/api/admissionregistration/v1
@@ -634,7 +634,7 @@ k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1
 k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1beta1
 k8s.io/apiextensions-apiserver/pkg/client/clientset/clientset/scheme
 k8s.io/apiextensions-apiserver/pkg/client/clientset/clientset/typed/apiextensions/v1beta1
-# k8s.io/apimachinery v0.18.8 => k8s.io/apimachinery v0.18.8
+# k8s.io/apimachinery v0.18.9 => k8s.io/apimachinery v0.18.8
 ## explicit
 k8s.io/apimachinery/pkg/api/apitesting/fuzzer
 k8s.io/apimachinery/pkg/api/equality
@@ -901,7 +901,7 @@ k8s.io/client-go/util/jsonpath
 k8s.io/client-go/util/keyutil
 k8s.io/client-go/util/retry
 k8s.io/client-go/util/workqueue
-# k8s.io/code-generator v0.18.8 => k8s.io/code-generator v0.18.8
+# k8s.io/code-generator v0.18.9 => k8s.io/code-generator v0.18.8
 ## explicit
 k8s.io/code-generator
 k8s.io/code-generator/cmd/client-gen
