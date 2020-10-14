@@ -42,7 +42,7 @@ jobs:
           GO111MODULE=on go get github.com/google/ko/cmd/ko@master
       - name: Install Camel K Client
         env:
-          CAMEL_K_VERSION: 1.1.1
+          CAMEL_K_VERSION: 1.2.0
         run: |
           curl -Lo ./kamel.tar.gz https://github.com/apache/camel-k/releases/download/v${CAMEL_K_VERSION}/camel-k-client-${CAMEL_K_VERSION}-linux-64bit.tar.gz
           tar -xzf kamel.tar.gz
