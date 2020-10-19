@@ -98,7 +98,7 @@ func TestCamelSource(t *testing.T) {
 	t.Logf("Sleeping for 3s to let the timer tick at least once")
 	time.Sleep(3 * time.Second)
 
-	pods, err := client.Kube.Kube.CoreV1().Pods(client.Namespace).List(ctx, meta.ListOptions{
+	pods, err := client.Kube.CoreV1().Pods(client.Namespace).List(ctx, meta.ListOptions{
 		LabelSelector: "camel.apache.org/integration",
 	})
 	if err != nil {
