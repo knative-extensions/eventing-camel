@@ -37,6 +37,8 @@ import (
 
 	"knative.dev/eventing-camel/pkg/apis/sources/v1alpha1"
 	camelsourceclient "knative.dev/eventing-camel/pkg/client/clientset/versioned"
+
+	_ "knative.dev/pkg/system/testing"
 )
 
 func TestCamelSource(t *testing.T) {
