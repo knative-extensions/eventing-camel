@@ -16,6 +16,7 @@ jobs:
       KO_DOCKER_REPO: registry:5000
       CAMEL_K_REGISTRY: registry:5000
       CAMEL_K_REGISTRY_INSECURE: true
+      SYSTEM_NAMESPACE: knative-eventing
 
     steps:
       - name: Cleanup Host
