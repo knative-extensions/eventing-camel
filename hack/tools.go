@@ -28,8 +28,8 @@ import (
 	_ "k8s.io/kube-openapi/cmd/openapi-gen"
 	_ "knative.dev/pkg/codegen/cmd/injection-gen"
 
+	_ "knative.dev/hack"
 	_ "knative.dev/pkg/hack"
-	_ "knative.dev/test-infra/scripts"
 
 	// Test images from eventing
 	_ "knative.dev/eventing/test/test_images/event-sender"
