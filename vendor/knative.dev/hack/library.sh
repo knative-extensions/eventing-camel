@@ -512,16 +512,19 @@ function go_update_deps() {
 
   export GO111MODULE=on
   export GOFLAGS=""
+  export GOSUMDB=off   # Do not use the sum.golang.org service.
 
   echo "=== Update Deps for Golang"
 
   local UPGRADE=0
   local VERSION="master"
+  local DOMAIN="knative.dev"
   while [[ $# -ne 0 ]]; do
     parameter=$1
     case ${parameter} in
       --upgrade) UPGRADE=1 ;;
       --release) shift; VERSION="$1" ;;
+      --domain) shift; DOMAIN="$1" ;;
       *) abort "unknown option ${parameter}" ;;
     esac
     shift
@@ -539,7 +542,7 @@ function go_update_deps() {
     else
       echo "Respecting 'GOPROXY=${GOPROXY}'."
     fi
-    FLOATING_DEPS+=( $(run_go_tool knative.dev/test-infra/buoy buoy float ${REPO_ROOT_DIR}/go.mod --release ${VERSION} --domain knative.dev) )
+    FLOATING_DEPS+=( $(run_go_tool knative.dev/test-infra/buoy buoy float ${REPO_ROOT_DIR}/go.mod --release ${VERSION} --domain ${DOMAIN}) )
     if [[ ${#FLOATING_DEPS[@]} > 0 ]]; then
       echo "Floating deps to ${FLOATING_DEPS[@]}"
       go get -d ${FLOATING_DEPS[@]}
@@ -557,7 +560,11 @@ function go_update_deps() {
   echo "--- Removing unwanted vendor files"
 
   # Remove unwanted vendor files
-  find vendor/ \( -name "OWNERS" -o -name "OWNERS_ALIASES" -o -name "BUILD" -o -name "BUILD.bazel" -o -name "*_test.go" \) -print0 | xargs -0 rm -f
+  find vendor/ \( -name "OWNERS" \
+    -o -name "OWNERS_ALIASES" \
+    -o -name "BUILD" \
+    -o -name "BUILD.bazel" \
+    -o -name "*_test.go" \) -exec rm -f {} +
 
   export GOFLAGS=-mod=vendor
 
