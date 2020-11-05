@@ -92,6 +92,7 @@ func TestCamelSource(t *testing.T) {
 	})
 
 	t.Logf("Waiting for all resources ready")
+	time.Sleep(2 * time.Minute) // Adding some delay because next command does not accept a timeout
 	client.WaitForAllTestResourcesReadyOrFail(ctx)
 
 	t.Logf("Sleeping for 3s to let the timer tick at least once")
