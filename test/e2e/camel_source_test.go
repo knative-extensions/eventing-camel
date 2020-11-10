@@ -30,13 +30,12 @@ import (
 
 	"github.com/cloudevents/sdk-go/v2/test"
 	meta "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"knative.dev/eventing-camel/pkg/apis/sources/v1alpha1"
+	camelsourceclient "knative.dev/eventing-camel/pkg/client/clientset/versioned"
 	testlib "knative.dev/eventing/test/lib"
 	"knative.dev/eventing/test/lib/recordevents"
 	"knative.dev/eventing/test/lib/resources"
 	knativeduck "knative.dev/pkg/apis/duck/v1beta1"
-
-	"knative.dev/eventing-camel/pkg/apis/sources/v1alpha1"
-	camelsourceclient "knative.dev/eventing-camel/pkg/client/clientset/versioned"
 )
 
 func TestCamelSource(t *testing.T) {
@@ -93,6 +92,7 @@ func TestCamelSource(t *testing.T) {
 	})
 
 	t.Logf("Waiting for all resources ready")
+	time.Sleep(2 * time.Minute) // Adding some delay because next command does not accept a timeout
 	client.WaitForAllTestResourcesReadyOrFail(ctx)
 
 	t.Logf("Sleeping for 3s to let the timer tick at least once")
@@ -146,6 +146,8 @@ func createCamelPlatformOrFail(ctx context.Context, c *testlib.Client, camelClie
 		Spec: camelv1.IntegrationPlatformSpec{
 			Profile: camelv1.TraitProfileKnative,
 			Build: camelv1.IntegrationPlatformBuildSpec{
+				PublishStrategy: camelv1.IntegrationPlatformBuildPublishStrategySpectrum,
+				BuildStrategy:   camelv1.IntegrationPlatformBuildStrategyRoutine,
 				Registry: camelv1.IntegrationPlatformRegistrySpec{
 					Insecure: getBuildRegistryInsecure(),
 					Address:  getBuildRegistry(),

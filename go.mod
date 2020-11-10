@@ -9,18 +9,18 @@ require (
 	github.com/google/go-cmp v0.5.2
 	github.com/google/licenseclassifier v0.0.0-20200708223521-3d09a0ea2f39
 	github.com/influxdata/tdigest v0.0.1 // indirect
+	github.com/sergi/go-diff v1.1.0 // indirect
 	github.com/stretchr/testify v1.6.0 // indirect
-	go.opencensus.io v0.22.5-0.20200716030834-3456e1d174b2 // indirect
-	go.uber.org/zap v1.15.0
+	go.uber.org/zap v1.16.0
 	gopkg.in/yaml.v2 v2.3.0
 	k8s.io/api v0.18.9
 	k8s.io/apimachinery v0.18.9
 	k8s.io/client-go v11.0.1-0.20190805182717-6502b5e7b1b5+incompatible
 	k8s.io/code-generator v0.18.9
 	k8s.io/kube-openapi v0.0.0-20200410145947-bcb3869e6f29
-	knative.dev/eventing v0.18.1-0.20201028151034-7c24cda5fd71
-	knative.dev/hack v0.0.0-20201027221733-0d7f2f064b7b
-	knative.dev/pkg v0.0.0-20201028142834-e135a1737847
+	knative.dev/eventing v0.18.1-0.20201104130304-44e2412a9d92
+	knative.dev/hack v0.0.0-20201103151104-3d5abc3a0075
+	knative.dev/pkg v0.0.0-20201103163404-5514ab0c1fdf
 )
 
 replace (
