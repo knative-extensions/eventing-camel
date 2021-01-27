@@ -26,8 +26,10 @@ import (
 )
 
 // CamelSourceLister helps list CamelSources.
+// All objects returned here must be treated as read-only.
 type CamelSourceLister interface {
 	// List lists all CamelSources in the indexer.
+	// Objects returned here must be treated as read-only.
 	List(selector labels.Selector) (ret []*v1alpha1.CamelSource, err error)
 	// CamelSources returns an object that can list and get CamelSources.
 	CamelSources(namespace string) CamelSourceNamespaceLister
@@ -58,10 +60,13 @@ func (s *camelSourceLister) CamelSources(namespace string) CamelSourceNamespaceL
 }
 
 // CamelSourceNamespaceLister helps list and get CamelSources.
+// All objects returned here must be treated as read-only.
 type CamelSourceNamespaceLister interface {
 	// List lists all CamelSources in the indexer for a given namespace.
+	// Objects returned here must be treated as read-only.
 	List(selector labels.Selector) (ret []*v1alpha1.CamelSource, err error)
 	// Get retrieves the CamelSource from the indexer for a given namespace and name.
+	// Objects returned here must be treated as read-only.
 	Get(name string) (*v1alpha1.CamelSource, error)
 	CamelSourceNamespaceListerExpansion
 }
