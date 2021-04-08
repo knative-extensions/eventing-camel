@@ -5,7 +5,7 @@ go 1.15
 require (
 	github.com/apache/camel-k/pkg/apis/camel v1.2.0
 	github.com/apache/camel-k/pkg/client/camel v1.2.0
-	github.com/cloudevents/sdk-go/v2 v2.2.0
+	github.com/cloudevents/sdk-go/v2 v2.4.0
 	github.com/google/go-cmp v0.5.5
 	github.com/google/licenseclassifier v0.0.0-20200708223521-3d09a0ea2f39
 	github.com/influxdata/tdigest v0.0.1 // indirect
@@ -17,9 +17,9 @@ require (
 	k8s.io/client-go v0.19.7
 	k8s.io/code-generator v0.19.7
 	k8s.io/kube-openapi v0.0.0-20200805222855-6aeccd4b50c6
-	knative.dev/eventing v0.22.0
+	knative.dev/eventing v0.22.1-0.20210407214954-4a3216ca221e
 	knative.dev/hack v0.0.0-20210325223819-b6ab329907d3
-	knative.dev/pkg v0.0.0-20210331065221-952fdd90dbb0
+	knative.dev/pkg v0.0.0-20210408073950-01dccc570bb3
 )
 
 replace (
