@@ -2,10 +2,10 @@
 
 This repository will no longer be maintained and will be archived in a future release of Knative.
 
-Please visit the [Kamelet catalog at Apache](https://camel.apache.org/camel-kamelets/latest/) for an up-to-date collection of 
+Please visit the [Kamelet catalog at Apache](https://camel.apache.org/camel-kamelets/latest/) for an up-to-date collection of
 Knative sources and sinks based on Apache Camel.
 
-Each entry of the catalog contains information on how to use it in a Knative environment, together with 
+Each entry of the catalog contains information on how to use it in a Knative environment, together with
 general guides on prerequisite installation.
 
 Kamelets are also supported in the `kn` CLI through the [kn-source-kamelet](https://github.com/knative-sandbox/kn-plugin-source-kamelet) addon.
