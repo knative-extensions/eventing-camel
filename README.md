@@ -1,6 +1,6 @@
 # Deprecated: Knative Eventing Camel Source
 
-This repository will no longer be maintained and will be archived in a future release of Knative.
+This repository will no longer be maintained and will be archived after the 0.23 release of Knative.
 
 Please visit the [Kamelet catalog at Apache](https://camel.apache.org/camel-kamelets/latest/) for an up-to-date collection of
 Knative sources and sinks based on Apache Camel.
