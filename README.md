@@ -1,14 +1,18 @@
 # Deprecated: Knative Eventing Camel Source
 
-This repository will no longer be maintained and will be archived after the 0.23 release of Knative.
+This repository will no longer be maintained and will be archived after the 0.23
+release of Knative.
 
-Please visit the [Kamelet catalog at Apache](https://camel.apache.org/camel-kamelets/latest/) for an up-to-date collection of
-Knative sources and sinks based on Apache Camel.
+Please visit the
+[Kamelet catalog at Apache](https://camel.apache.org/camel-kamelets/latest/) for
+an up-to-date collection of Knative sources and sinks based on Apache Camel.
 
-Each entry of the catalog contains information on how to use it in a Knative environment, together with
-general guides on prerequisite installation.
+Each entry of the catalog contains information on how to use it in a Knative
+environment, together with general guides on prerequisite installation.
 
-Kamelets are also supported in the `kn` CLI through the [kn-source-kamelet](https://github.com/knative-sandbox/kn-plugin-source-kamelet) addon.
+Kamelets are also supported in the `kn` CLI through the
+[kn-source-kamelet](https://github.com/knative-sandbox/kn-plugin-source-kamelet)
+addon.
 
 ---
 
