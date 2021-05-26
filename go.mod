@@ -6,7 +6,7 @@ require (
 	github.com/apache/camel-k/pkg/apis/camel v1.2.0
 	github.com/apache/camel-k/pkg/client/camel v1.2.0
 	github.com/cloudevents/sdk-go/v2 v2.4.1
-	github.com/google/go-cmp v0.5.5
+	github.com/google/go-cmp v0.5.6
 	github.com/google/licenseclassifier v0.0.0-20200708223521-3d09a0ea2f39
 	github.com/influxdata/tdigest v0.0.1 // indirect
 	github.com/sergi/go-diff v1.1.0 // indirect
@@ -19,7 +19,7 @@ require (
 	k8s.io/kube-openapi v0.0.0-20200805222855-6aeccd4b50c6
 	knative.dev/eventing v0.23.1-0.20210524085620-e48c80d7f969
 	knative.dev/hack v0.0.0-20210428122153-93ad9129c268
-	knative.dev/pkg v0.0.0-20210525071438-e2947dba201a
+	knative.dev/pkg v0.0.0-20210525142738-ea766de6bdd1
 )
 
 replace (
