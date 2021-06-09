@@ -18,18 +18,15 @@ package reconciler
 
 import (
 	"context"
-	"fmt"
 	"testing"
 
 	camelv1 "github.com/apache/camel-k/pkg/apis/camel/v1"
 	"go.uber.org/zap"
-	v1 "k8s.io/api/apps/v1"
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/types"
-	"k8s.io/client-go/kubernetes/scheme"
 	clientgotesting "k8s.io/client-go/testing"
 	sourcesv1alpha1 "knative.dev/eventing-camel/pkg/apis/sources/v1alpha1"
 	fakecamelclient "knative.dev/eventing-camel/pkg/camel-k/injection/client/fake"
@@ -37,8 +34,6 @@ import (
 	"knative.dev/eventing-camel/pkg/client/injection/reconciler/sources/v1alpha1/camelsource"
 	"knative.dev/eventing-camel/pkg/reconciler/resources"
 	reconcilertesting "knative.dev/eventing-camel/pkg/reconciler/testing"
-	duckv1 "knative.dev/pkg/apis/duck/v1"
-	duckv1alpha1 "knative.dev/pkg/apis/duck/v1alpha1"
 	duckv1beta1 "knative.dev/pkg/apis/duck/v1beta1"
 	"knative.dev/pkg/client/injection/ducks/duck/v1/addressable"
 	"knative.dev/pkg/configmap"
@@ -63,27 +58,6 @@ const (
 	addressableAPIVersion = "duck.knative.dev/v1"
 	addressableURI        = "http://addressable.sink.svc.cluster.local"
 )
-
-func init() {
-	// Add types to scheme
-	addToScheme(
-		v1.AddToScheme,
-		corev1.AddToScheme,
-		sourcesv1alpha1.SchemeBuilder.AddToScheme,
-		duckv1alpha1.AddToScheme,
-		duckv1beta1.AddToScheme,
-		camelv1.SchemeBuilder.AddToScheme,
-		duckv1.SchemeBuilder.AddToScheme,
-	)
-}
-
-func addToScheme(funcs ...func(*runtime.Scheme) error) {
-	for _, fun := range funcs {
-		if err := fun(scheme.Scheme); err != nil {
-			panic(fmt.Errorf("error during scheme registration: %v", zap.Error(err)))
-		}
-	}
-}
 
 func TestReconcile(t *testing.T) {
 	key := testNS + "/" + sourceName

@@ -34,7 +34,9 @@ import (
 )
 
 var addressableAddToScheme = func(scheme *runtime.Scheme) error {
-	scheme.AddKnownTypeWithName(schema.GroupVersionKind{Group: "duck.knative.dev", Version: "v1", Kind: "Addressable"}, &unstructured.Unstructured{})
+	gv := schema.GroupVersion{Group: "duck.knative.dev", Version: "v1"}
+	scheme.AddKnownTypeWithName(gv.WithKind("Addressable"), &unstructured.Unstructured{})
+	scheme.AddKnownTypeWithName(gv.WithKind("AddressableList"), &unstructured.UnstructuredList{})
 	return nil
 }
 
